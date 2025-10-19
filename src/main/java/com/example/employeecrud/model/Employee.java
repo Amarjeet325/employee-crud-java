@@ -1,4 +1,4 @@
-package com.example.employeecrud.model;
+ package com.example.employeecrud.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -38,7 +38,7 @@ public class Employee {
     @CollectionTable(name = "employee_education", joinColumns = @JoinColumn(name = "employee_id"))
     private List<Education> education;
 
-    // ✅ Inner class for Education
+    //  Inner class for Education
     @Embeddable
     public static class Education {
         private String level;
@@ -84,7 +84,7 @@ public class Employee {
         }
     }
 
-    // ✅ Getters and Setters for Employee
+    //  Getters and Setters for Employee
     public Long getUserId() {
         return userId;
     }

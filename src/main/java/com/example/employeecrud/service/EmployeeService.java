@@ -1,4 +1,4 @@
-package com.example.employeecrud.service;
+ package com.example.employeecrud.service;
 
 import com.example.employeecrud.model.Employee;
 import com.example.employeecrud.repository.EmployeeRepository;
@@ -15,22 +15,22 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    // ✅ Add a new employee with education details
+    //  Add a new employee with education details
     public Employee addEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
 
-    // ✅ Get all employees with education details
+    //   Get all employees with education details
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    // ✅ Get employee by ID
+    //  Get employee by ID
     public Optional<Employee> getEmployeeById(Long id) {
         return employeeRepository.findById(id);
     }
 
-    // ✅ Update employee details
+    //  Update employee details
     public Employee updateEmployee(Long id, Employee employeeDetails) {
         return employeeRepository.findById(id)
                 .map(employee -> {
@@ -45,14 +45,14 @@ public class EmployeeService {
                     employee.setState(employeeDetails.getState());
                     employee.setCountry(employeeDetails.getCountry());
                     
-                    // ✅ Update education list
+                    //  Update education list
                     employee.setEducation(employeeDetails.getEducation());
 
                     return employeeRepository.save(employee);
                 }).orElseThrow(() -> new RuntimeException("Employee not found with ID: " + id));
     }
 
-    // ✅ Delete employee by ID
+    //  Delete employee by ID
     public void deleteEmployee(Long id) {
         if (!employeeRepository.existsById(id)) {
             throw new RuntimeException("Employee not found with ID: " + id);
@@ -60,7 +60,7 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    // ✅ Find employees by firstName and dob
+    //  Find employees by firstName and dob
     public List<Employee> findEmployeesByNameAndDob(String firstName, LocalDate dob) {
         return employeeRepository.findByFirstNameAndDob(firstName, dob);
     }
